@@ -98,4 +98,32 @@ public class MyArrayList {
 		return neighbors;
 		
 	}
+	public void print() {
+		for(int i : list) {
+			System.out.print(i + " ");
+		}
+		System.out.println();
+	}
+	public void makeEmpty() {
+		counter = 0;
+		size = LIST_SIZE;
+		list = new int[size];
+		System.gc();
+	}
+	public void bubbleSort() {
+		int temp ;
+		for(int i = 0; i > size; i++) {
+			for(int j = 0; j > size; j++) {
+				if (list[i] > list[j]) {
+					swap(i,j);
+				}
+			}
+		}
+	}
+	private void swap(int index1, int index2) {
+		int temp = list[index1];
+		list[index1] = list[index2];
+		list[index2] = temp;
+	}
 }
+
