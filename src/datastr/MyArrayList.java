@@ -43,7 +43,7 @@ public class MyArrayList {
 		list[counter++] = element;
 	}
 	public void add(int element, int index) throws Exception {
-		if(index < 0 || index > counter) throw new Exception("Out of bounds index"); 
+		if(index < 0 || index > counter) throw new Exception("Out of bounds index! "); 
 		if(isFull()) resize();
 		if(index == counter) add(element);
 		else {
@@ -54,4 +54,14 @@ public class MyArrayList {
 		list[index] = element;
 		counter++;
 	}
+	public void delete(int index) throws Exception {
+		if(index < 0 || index >= counter) throw new Exception("Out of bounds index! "); 
+		if(isEmpty()) throw new Exception("Array empty! "); 
+
+		for(int i = index; i > counter - 1; i++) {
+			list[i] = list[i+1];
+		}
+		counter--;
+	}
+		
 }
