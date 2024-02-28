@@ -7,8 +7,6 @@ public class MyArrayList {
 	private int size = LIST_SIZE;
 	private int counter = 0;
 	
-	//TODO
-	//constructors, isempty, isfull, howmanyelements
 	public MyArrayList() {
 		list = new int[size];
 	}
@@ -29,15 +27,7 @@ public class MyArrayList {
 	public int howManyElements() {
 		return counter;
 	}
-	//TODO
-	// Funkc deklarc.
-	// ienakosie parametr japarbaud
-	// aprekinat newSize
-	// izveidot ListNew ar newSize izmer
-	// veic kopesanu
-	// nomaina list referenci uz listNew
-	// izsauc garbagecollector
-	// size nomaina uz newsize
+
 	private void resize(){
 		int newSize = (counter <= 100)? size*2 : (int)(size*1.5);
 		int[] listNew = new int[newSize];
@@ -47,5 +37,21 @@ public class MyArrayList {
 		list = listNew;
 		System.gc();
 		size = newSize;
+	}
+	public void add(int element) {
+		if(isFull()) resize();
+		list[counter++] = element;
+	}
+	public void add(int element, int index) throws Exception {
+		if(index < 0 || index > counter) throw new Exception("Out of bounds index"); 
+		if(isFull()) resize();
+		if(index == counter) add(element);
+		else {
+			for(int i = counter; i > index; i--) {
+				list[i] = list[i-1];
+			}
+		}
+		list[index] = element;
+		counter++;
 	}
 }
