@@ -1,9 +1,11 @@
 package service;
 
 import java.util.Arrays;
+import java.util.Scanner;
+
 import model.Student;
 import datastr.MyArrayList;
-
+import java.io.*; 
 
 //TODO nokopēt Student klasi un ielikt model pakotnē
 //TODO izveidot MyArrayList<Student> un to notestēt ar visām funkcijām
@@ -62,12 +64,33 @@ public class MainService {
 			myStudents.add(stud3);
 			myStudents.print();
 			
-			
-		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		try {
+			MyArrayList<Integer> numbersFromFile = readFromFile("C:\\Users\\s22bertendi\\numbers.txt");
+			numbersFromFile.print();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	public static MyArrayList<Integer> readFromFile(String path) throws Exception, FileNotFoundException, NumberFormatException{
+		if(path == null || path.length() < 3) throw new Exception("problem ar file path");
+		
+		MyArrayList<Integer> listForNumbers = new MyArrayList<Integer>();
+		File file = new File(path);
+		Scanner scanner = new Scanner(file);
+		while(scanner.hasNextLine()) {
+			String line = scanner.nextLine();
+			Integer tempNumber = Integer.parseInt(line);
+			listForNumbers.add(tempNumber);
+		}
+		scanner.close();
+		return listForNumbers;
 	}
 
 }
