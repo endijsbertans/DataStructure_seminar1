@@ -56,7 +56,7 @@ public class MainService {
 			System.out.println(Arrays.toString(myStudents.getNeighbours(stud1)));
 			myStudents.remove(1);
 			myStudents.print();
-			//myStudents.sort();
+			myStudents.sort();
 			myStudents.print();
 			myStudents.makeEmpty();
 			myStudents.add(stud3);

@@ -1,6 +1,6 @@
 package model;
 
-public class Student {
+public class Student implements Comparable<Student>{
 
 	//1. variables
 	private long sId;
@@ -54,4 +54,11 @@ public class Student {
 		return sId + ":" + name + " " + surname;
 	}
 	//5. other functions
+	@Override
+	public int compareTo(Student o) {
+		// TODO Auto-generated method stub
+		if(surname.charAt(0) > o.getSurname().charAt(0))return 1;
+			else if(surname.charAt(0) < o.getSurname().charAt(0))return -1;
+				else return 0;
+	}
 }
